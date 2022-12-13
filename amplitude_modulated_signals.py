@@ -4,12 +4,12 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 from   matplotlib.ticker import FuncFormatter
-print("===================================")
-print('| |---------------|                |')
-print('| |  PYTHON GUI   |                |')
-print('| |---------------|                |')
-print('| © 2022 DIAN. All Rights Reserved.|')
-print("===================================")
+print("=======================================")
+print('| |-----------------------------------|')
+print('| |   AMPLITUDE MODULATED SIGNALS     |')
+print('| |-----------------------------------|')
+print('| © 2022 DIAN VK. All Rights Reserved.|')
+print("=======================================")
 
 print('-----------------------------------------------')
 print(' COMMENTS:                                     ')
@@ -22,7 +22,7 @@ print('-----------------------------------------------')
 # UseFull Function
 def RANGING(START, END, STEP):
     # Calculate range between START, END with STEP
-    # exmmple:
+    # example:
     # START = 1, END = 2, STEP = 0.2
     # RANGE FISTE ITERATION = 1
     # RANGE FISTE ITERATION = 1.2
@@ -53,7 +53,7 @@ ampl  = []
 f     = []
 phase = []
 
-val       = 4     # get the value from UI pop minue [1, 2, 3, 4]
+val       = 4     # get the value from UI pop minute [1, 2, 3, 4]
 ampl.append(3)    # get the value from UI edit text for ampl1
 f.append(100)     # get the value from UI edit text for f1
 phase.append(100) # get the value from UI edit text for phase1
@@ -131,7 +131,7 @@ ax1.set_xticks([0, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.04]) # Set up
 ax1.set_xlim([0, t[-1]]) # Set up x limit
 ax1.set_ylim([-10, 10])  # Set up y limit
 
-ax2 = plt.subplot(4,1,2) # SEOND PLOT -----------------
+ax2 = plt.subplot(4,1,2) # SECOND PLOT -----------------
 ax2.tick_params(direction="in")
 ax2.xaxis.set_major_formatter(major_formatter)
 ax2.yaxis.set_major_formatter(major_formatter)
