@@ -3,4 +3,4 @@
  - The subject is Signals and Systems and the topic is Amplitude Modulated Signals.
  - I will be using GUI and Matplotlib to create this Project.
  
-![image (1)](https://user-images.githubusercontent.com/115580585/207413279-127bac81-5e8d-465e-962f-3a594741bdc2.png)
+![image](https://user-images.githubusercontent.com/115580585/207585111-0dc2dc67-2257-4c36-ba0d-4d7b87436328.jpg)
