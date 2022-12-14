@@ -176,7 +176,7 @@ def BUTTON_PRESSED():
 
 # Code started ---------------------------------------------------------------------------------
 CTKi = customtkinter.CTk()
-CTKi.title(" 2022 DIAN PYTHON GUI")
+CTKi.title("Amplitude Modulated Signals by Dian Velichkov")
 CTKi.geometry(f"{830}x{550}+{10}+{10}")
 # CTKi.resizable(False, False)
 print(' ---- CODE  STARTED ---- ')
