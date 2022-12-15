@@ -13,6 +13,9 @@ print('| |                 Signals and Systems                  |')
 print('| |             Amplitude Modulated Signals              |')
 print('| |------------------------------------------------------|')
 print('| ©   2022 DIAN VELICHKOV KINANEV. All Rights Reserved.  |')
+print('| |      Technical University Sofia - Branch Plovdiv     |')
+print('| |                Leader of the project                 |')
+print('| |            Dr.   Eng.   Iliya   Petrov               |')
 print("==========================================================")
 
 
@@ -178,6 +181,7 @@ def BUTTON_PRESSED():
 CTKi = customtkinter.CTk()
 CTKi.title("Amplitude Modulated Signals by Dian Velichkov")
 CTKi.geometry(f"{830}x{550}+{10}+{10}")
+
 # CTKi.resizable(False, False)
 print(' ---- CODE  STARTED ---- ')
 print(' ----  GUI WORKING  ---- ')
@@ -210,7 +214,7 @@ Modulating_Signal_4.grid(sticky='wn', row=1, column=1, padx=(20, 10), pady=(20, 
 Modulating_SignalsFR2 = tkinter.LabelFrame(Modulating_Signals, labelanchor='n', borderwidth=1.5, relief='solid')
 Modulating_SignalsFR2.grid(row=1, column=0, padx=4, pady=10)
 # RIGHT FRAME LAST FRAME
-Modulating_Signal_C = tkinter.LabelFrame(Modulating_Signals, labelanchor='n', text='  Corrier \n  Signal  ',
+Modulating_Signal_C = tkinter.LabelFrame(Modulating_Signals, labelanchor='n', text='  Carrier \n  Signal  ',
                                          borderwidth=1.5, relief='solid', font=font)
 Modulating_Signal_C.grid(row=2, column=0, padx=4, pady=10)
 # Figures
