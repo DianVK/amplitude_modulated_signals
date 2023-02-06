@@ -36,7 +36,7 @@ def SetVitessAnimation(IntVal):
     Handle the animation vitesse
     '''
     global valueInterval
-    valueInterval = abs(float(IntVal) - 200)
+    valueInterval = abs(float(IntVal) - 201)
 
 
 def RANGING(START, END, STEP):
