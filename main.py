@@ -36,7 +36,7 @@ def SetVitessAnimation(IntVal):
     Handle the animation vitesse
     '''
     global valueInterval
-    valueInterval = abs(float(IntVal) - 201)
+    valueInterval = abs(float(IntVal) - 200)
 
 
 def RANGING(START, END, STEP):
@@ -318,20 +318,20 @@ def ANIMATION_BUTTON(fig2, ax2, tt, sctt, FIG2, fig1, ax1, t, y, FIG1, amplc, fc
 
 # Code started ------------------------------------------------------------------------------------------------
 # Global Variables
-fig2 = None;
-ax2 = None;
-tt = None;
-sctt = None;
+fig2 = None
+ax2  = None
+tt   = None
+sctt = None
 FIG2 = None
-fig1 = None;
-ax1 = None;
-t = None;
-y = None;
+fig1 = None
+ax1  = None
+t    = None
+y    = None
 FIG1 = None
-fig4 = None;
-ax4 = None;
-fr = None;
-a = None;
+fig4 = None
+ax4  = None
+fr   = None
+a    = None
 FIG4 = None
 valueInterval = 50
 
@@ -637,6 +637,123 @@ Fast.place(x=85, y=37)
 
 
 # ---------------------------------------------------------------------------------------------------------------
+
+# Check Invalid Numbers
+from tkinter import messagebox
+def show_popup(msg):
+    messagebox.showinfo("Грешно въведени данни!", msg)
+
+# check cursor in Carrier signal f
+cursor_in_f = False
+def check_cursor():
+    global cursor_in_f
+    while True:
+        try:
+            if CTKi.focus_get() == Modulating_Signal_CFE:
+                cursor_in_f = True
+            else:
+                cursor_in_f = False
+            time.sleep(0.2)
+        except:
+            pass
+thread_checker = Thread(target = check_cursor, daemon= True)
+thread_checker.name = 'thread_cursor'
+thread_checker.start()
+
+# Check Invalid Numbers
+def Check_Invalid_Numbers():
+    phase_interval = [-180, 180]
+    while True:
+        # phase part
+        try:
+            valcomb = float(ComboboxL.get())
+            phasec  = float(Modulating_Signal_CPHE.get())
+            phase_1 = float(Modulating_Signal_1PHE.get())
+            if not (phase_interval[0] <= phasec <= phase_interval[1]):
+                # Show the pop-up
+                msg = 'Грешно въведени данни! Фазата на носещият сигнал не е в границите [-180, 180]!'
+                show_popup(msg)
+                Modulating_Signal_CPHE.delete(0, tkinter.END)
+                if phasec > phase_interval[1]:
+                    Modulating_Signal_CPHE.insert(0, '180')
+                else:
+                    Modulating_Signal_CPHE.insert(0, '-180')
+            if not (phase_interval[0] <= phase_1 <= phase_interval[1]):
+                msg = "Грешно въведени данни! Фазата на Модулиращ сигнал №1  не е в границите [-180, 180]!"
+                show_popup(msg)
+                Modulating_Signal_1PHE.delete(0, tkinter.END)
+                if phase_1 > phase_interval[1]:
+                    Modulating_Signal_1PHE.insert(0, '180')
+                else:
+                    Modulating_Signal_1PHE.insert(0, '-180')
+            if valcomb >= 2:
+                phase_2 = float(Modulating_Signal_2PHE.get())
+                if not (phase_interval[0] <= phase_2 <= phase_interval[1]):
+                    msg = "Грешно въведени данни! Фазата на Модулиращ сигнал №2  не е в границите [-180, 180]!"
+                    show_popup(msg)
+                    Modulating_Signal_2PHE.delete(0, tkinter.END)
+                    if phase_2 > phase_interval[1]:
+                        Modulating_Signal_2PHE.insert(0, '180')
+                    else:
+                        Modulating_Signal_2PHE.insert(0, '-180')
+            if valcomb >= 3:
+                phase_3 = float(Modulating_Signal_3PHE.get())
+                if not (phase_interval[0] <= phase_3 <= phase_interval[1]):
+                    msg = "Грешно въведени данни! Фазата на Модулиращ сигнал №3  не е в границите [-180, 180]!"
+                    show_popup(msg)
+                    Modulating_Signal_3PHE.delete(0, tkinter.END)
+                    if phase_3 > phase_interval[1]:
+                        Modulating_Signal_3PHE.insert(0, '180')
+                    else:
+                        Modulating_Signal_3PHE.insert(0, '-180')
+            if valcomb >= 4:
+                phase_4 = float(Modulating_Signal_4PHE.get())
+                if not (phase_interval[0] <= phase_4 <= phase_interval[1]):
+                    msg = "Грешно въведени данни! Фазата на Модулиращ сигнал №4  не е в границите [-180, 180]!"
+                    show_popup(msg)
+                    Modulating_Signal_4PHE.delete(0, tkinter.END)
+                    if phase_4 > phase_interval[1]:
+                        Modulating_Signal_4PHE.insert(0, '180')
+                    else:
+                        Modulating_Signal_4PHE.insert(0, '-180')
+            # f part 
+            while cursor_in_f:
+                time.sleep(0.2)
+            Fc = int(Modulating_Signal_CFE.get())/10
+            f1 = int(Modulating_Signal_1FE.get())
+            if f1 > Fc:
+                msg = "Грешно въведени данни! Въведените данни за Модулиращ сигнал №1 са по-големи от 'f/10 = " + str(int(Fc)) + " на Носещият сигнал!"
+                show_popup(msg)
+                Modulating_Signal_1FE.delete(0, tkinter.END)
+                Modulating_Signal_1FE.insert(0, str(int(Fc)))
+            if valcomb >= 2:
+                f2 = int(Modulating_Signal_2FE.get())
+                if f2 > Fc:
+                    msg = "Грешно въведени данни! Въведените данни за Модулиращ сигнал №2 са по-големи от 'f/10 = " + str(int(Fc)) + " на Носещият сигнал!"
+                    show_popup(msg)
+                    Modulating_Signal_2FE.delete(0, tkinter.END)
+                    Modulating_Signal_2FE.insert(0, str(int(Fc)))
+            if valcomb >= 3:
+                f3 = int(Modulating_Signal_3FE.get())
+                if f3 > Fc:
+                    msg = "Грешно въведени данни! Въведените данни за Модулиращ сигнал №3 са по-големи от 'f/10 = " + str(int(Fc)) + " на Носещият сигнал!"
+                    show_popup(msg)
+                    Modulating_Signal_3FE.delete(0, tkinter.END)
+                    Modulating_Signal_3FE.insert(0, str(int(Fc)))
+            if valcomb >= 4:
+                f4 = int(Modulating_Signal_4FE.get())
+                if f4 > Fc:
+                    msg = "Грешно въведени данни! Въведените данни за Модулиращ сигнал №4 са по-големи от 'f/10 = " + str(int(Fc)) + " на Носещият сигнал!"
+                    show_popup(msg)
+                    Modulating_Signal_4FE.delete(0, tkinter.END)
+                    Modulating_Signal_4FE.insert(0, str(int(Fc)))
+            time.sleep(1)
+        except:
+            time.sleep(1)
+
+thread_checker = Thread(target = Check_Invalid_Numbers, daemon= True)
+thread_checker.name = 'thread_checker'
+thread_checker.start()
 
 def callback():
     var.set(var.get() + 1)
